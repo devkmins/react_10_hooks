@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { usePreventLeave } from "./hooks/usePreventLeave";
+import { useBeforeLeave } from "./hooks/useBeforeLeave";
 
 function App() {
-  const { enablePrevent, disablePrevent } = usePreventLeave();
+  const begForLife = () => console.log("Plz dont leave");
+  useBeforeLeave(begForLife);
 
-  return (
-    <div>
-      <button onClick={enablePrevent}>Protect</button>
-      <button onClick={disablePrevent}>UnProtect</button>
-    </div>
-  );
+  return <div></div>;
 }
 
 export default App;
