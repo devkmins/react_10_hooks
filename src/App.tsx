@@ -1,14 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useFadeIn } from "./hooks/useFadeIn";
+import { useNetwork } from "./hooks/useNetwork";
 
 function App() {
-  const FadeInH1 = useFadeIn(1, 2);
-  const FadeInP = useFadeIn(3, 6);
+  const handleNetworkChange = (online: any) => {
+    console.log(online ? "Online" : "Offline");
+  };
+  const onLine = useNetwork(handleNetworkChange);
 
   return (
     <div>
-      <h1 {...FadeInH1}>Hi</h1>
-      <p {...FadeInP}>HIHIHIHIHHIHI</p>
+      <h1>{onLine ? "Online" : "Offline"}</h1>
     </div>
   );
 }
