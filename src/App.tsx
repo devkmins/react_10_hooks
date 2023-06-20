@@ -1,13 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useClick } from "./hooks/useClick";
+import React, { useEffect, useState } from "react";
+import { useConfirm } from "./hooks/useConfirm";
 
 function App() {
-  const sayHello = () => console.log("Hello");
-  const title = useClick(sayHello);
+  const deleteTheWorld = () => console.log("Deleting the world...");
+  const abort = () => console.log("Aborted");
+  const confirmDelete = useConfirm("Are you sure", deleteTheWorld, abort);
 
   return (
     <div>
-      <h3 ref={title}>Hello</h3>
+      <button>Delete the world</button>
     </div>
   );
 }
