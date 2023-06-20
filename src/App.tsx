@@ -1,15 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNetwork } from "./hooks/useNetwork";
+import { useScroll } from "./hooks/useScroll";
 
 function App() {
-  const handleNetworkChange = (online: any) => {
-    console.log(online ? "Online" : "Offline");
-  };
-  const onLine = useNetwork(handleNetworkChange);
+  const { y } = useScroll();
 
   return (
-    <div>
-      <h1>{onLine ? "Online" : "Offline"}</h1>
+    <div style={{ height: "200vh" }}>
+      <h1 style={{ position: "fixed", color: y > 100 ? "red" : "blue" }}>Hi</h1>
     </div>
   );
 }
