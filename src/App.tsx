@@ -1,12 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNotification } from "./hooks/useNotification";
+import { useAxios } from "./hooks/useAxios";
 
 function App() {
-  const triggerNotification = useNotification("HI", { body: "HELLO" });
+  const { loading, data, error, refetch } = useAxios({
+    url: "https://yts.mx/api/v2/list_movies.json",
+  });
 
   return (
     <div>
-      <button onClick={triggerNotification}>Click</button>
+      <h1>{data && data.status}</h1>
+      <h2>{loading && "Loading"}</h2>
+      <button onClick={refetch}>Refetch</button>
     </div>
   );
 }
