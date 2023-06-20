@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useTitle } from "./hooks/useTitle";
+import React, { useEffect, useRef, useState } from "react";
+import { useClick } from "./hooks/useClick";
 
 function App() {
-  const titleUpdater = useTitle("Loading...");
-  setTimeout(() => titleUpdater("Home"), 5000);
+  const sayHello = () => console.log("Hello");
+  const title = useClick(sayHello);
 
   return (
     <div>
-      <h3>Hello</h3>
+      <h3 ref={title}>Hello</h3>
     </div>
   );
 }
